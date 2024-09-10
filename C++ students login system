@@ -1,0 +1,31 @@
+#include <iostream>
+#include <string>
+
+struct Student {
+    std::string id;
+    std::string course;
+};
+
+bool isValidStudent(const Student& student, const std::string& inputId, const std::string& inputCourse) {
+    return student.id == inputId && student.course == inputCourse;
+}
+
+int main() {
+    // Sample student data
+    Student validStudent = {"123456", "Computer Science"};
+
+    std::string inputId, inputCourse;
+    std::cout << "Enter your ID number: ";
+    std::cin >> inputId;
+    std::cout << "Enter your course: ";
+    std::cin.ignore(); // Ignore newline character from previous input
+    std::getline(std::cin, inputCourse);
+
+    if (isValidStudent(validStudent, inputId, inputCourse)) {
+        std::cout << "Login successful! Welcome, student " << inputId << ".\n";
+    } else {
+        std::cout << "Invalid ID number or course. Login failed.\n";
+    }
+
+    return 0;
+}
